@@ -1,0 +1,36 @@
+.container{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 20%;
+    scroll-margin-top: 100px;
+}
+.container p{
+    text-align: left;
+}
+
+.table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    text-align: center;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.col ul{
+    padding: 0%;
+    list-style: none;
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        width: 90%;
+    }
+    .table{
+        flex-direction: column;  
+    }
+}

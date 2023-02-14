@@ -1,0 +1,65 @@
+.sidebar{
+    width: 280px;
+    height: 100vh;
+    background-color: #15283c;
+    color: azure;
+    position: fixed;
+}
+
+.sidebar h2{
+    width: 230px;
+    padding: 15px 25px;
+}
+.user-info{
+    width: 230px;
+    height: 100px;
+    padding: 15px 25px;
+    background-color: #214162;
+    
+}
+
+.user-info h4{
+    margin: 0px;
+}
+
+.my__img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.sidebar-nav{
+    width: 230px;
+    padding: 0px 25px;
+}
+
+.sidebar-nav ul{
+    padding: 0%;
+    list-style: none;
+    font-size: 20px;
+}
+.sidebar-nav li{
+    height: 35px;
+}   
+
+.sidebar-nav li:hover{
+    background-color: #1766ba;
+}
+
+.sidebar-nav a{
+    color: azure;
+}
+
+.login-button{
+    padding: 10px 30px;
+    font-weight: bold;
+    background-color: crimson;
+    color: azure;
+    border-radius: 20px;
+}
+
+.login-button:hover{
+    color: crimson;
+    background-color: azure;
+}
