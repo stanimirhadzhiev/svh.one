@@ -43,7 +43,7 @@ export const EditEducation = () =>{
                         placeholder="Education"
                         name="education"
                         id="education"
-                        defaultValue={educationData.educationArray}
+                        value={educationData.educationArray}
                         onChange={(e) => { setEducation(e.target.value) }}
                     >
                     </textarea>

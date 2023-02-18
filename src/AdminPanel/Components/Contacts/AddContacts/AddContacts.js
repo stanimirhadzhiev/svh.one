@@ -8,26 +8,22 @@ import * as dataService from '../../../services/dataService';
 
 export const AddContacts = () =>{
     const navigate = useNavigate();
+    const [data, setData] = useState({
+        linkedin: "",
+        github: "",
+        email: "",
+        phoneNumber: "",
+        website: "",
+    });
     
-    const [linkedin, setLinkedin] = useState("");
-    const [github, setGithub] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [website, setWebsite] = useState("");
-
-
     const dataRef = doc(db, "data", "contacts");
-
     
-    const data = {
-        linkedin,
-        github,
-        email,
-        phoneNumber,
-        website
-    };
-
-    
+    const changeHandler = (e) =>{
+        setData(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    }
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +43,8 @@ export const AddContacts = () =>{
                         type="url"
                         name="linkedin"
                         id="linkedin"
-                        onChange={(e) => {setLinkedin(e.target.value)}}
+                        value={data.linkedin}
+                        onChange={changeHandler}
                     >
                     </input>
                 </div>
@@ -59,7 +56,8 @@ export const AddContacts = () =>{
                         type="url" 
                         name="github"
                         id="github"
-                        onChange={(e) => { setGithub(e.target.value) }}
+                        value={data.github}
+                        onChange={changeHandler}
                     >
                     </input>
                 </div>
@@ -71,7 +69,8 @@ export const AddContacts = () =>{
                         placeholder="Email"
                         name="email"
                         id="email"
-                        onChange={(e) => { setEmail(e.target.value) }}
+                        value={data.email}
+                        onChange={changeHandler}
                     >
                     </input>
                 </div>
@@ -83,7 +82,8 @@ export const AddContacts = () =>{
                         placeholder="Phone Number"
                         name="phoneNumber"
                         id="phoneNumber"
-                        onChange={(e) => { setPhoneNumber(e.target.value) }}
+                        value={data.phoneNumber}
+                        onChange={changeHandler}
                     >
                     </input>
                 </div>
@@ -95,7 +95,8 @@ export const AddContacts = () =>{
                         placeholder="Website"
                         name="website"
                         id="website"
-                        onChange={(e) => { setWebsite(e.target.value) }}
+                        value={data.website}
+                        onChange={changeHandler}
                     >
                     </input>
                 </div>
