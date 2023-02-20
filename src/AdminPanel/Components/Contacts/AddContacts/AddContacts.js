@@ -5,9 +5,11 @@ import {useNavigate} from "react-router-dom";
 import { doc } from "firebase/firestore";
 import { db } from '../../../../config/firebaseConfig';
 import * as dataService from '../../../services/dataService';
+import * as validators from '../../../utils/validators';
 
 export const AddContacts = () =>{
     const navigate = useNavigate();
+    const [error, setError] = useState("");
     const [data, setData] = useState({
         linkedin: "",
         github: "",
@@ -23,6 +25,7 @@ export const AddContacts = () =>{
             ...state,
             [e.target.name]: e.target.value
         }));
+        setError("");
     }
 
     const onSubmit = async (e) => {
@@ -30,7 +33,7 @@ export const AddContacts = () =>{
         dataService.createData(data, dataRef);
         navigate("/admin");
     };
-    
+    console.log(error);
     return(
         <div className={style["container"]}> 
             <h1 className={style["title"]}>Add Experience</h1>
@@ -71,8 +74,10 @@ export const AddContacts = () =>{
                         id="email"
                         value={data.email}
                         onChange={changeHandler}
+                        onBlur={(e) => validators.emailValidator(e.target.value, setError)}
                     >
                     </input>
+                    {error && <p className={style["error-message"]}>{error}</p>}
                 </div>
                 <div className={style["row"]}>
                     <label htmlFor="phoneNumber">Phone Number</label>

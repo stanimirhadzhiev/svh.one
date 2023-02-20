@@ -48,3 +48,9 @@
 .btn:hover{
     background-color: orangered;
 }
+
+.error-message{
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+}
