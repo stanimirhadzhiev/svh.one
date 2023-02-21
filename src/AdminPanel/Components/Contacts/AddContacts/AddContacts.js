@@ -9,7 +9,10 @@ import * as validators from '../../../utils/validators';
 
 export const AddContacts = () =>{
     const navigate = useNavigate();
-    const [error, setError] = useState("");
+    const [error, setError] = useState({
+        url: "",
+        email: "",
+    });
     const [data, setData] = useState({
         linkedin: "",
         github: "",
@@ -25,7 +28,7 @@ export const AddContacts = () =>{
             ...state,
             [e.target.name]: e.target.value
         }));
-        setError("");
+        // setError("");
     }
 
     const onSubmit = async (e) => {
@@ -48,8 +51,10 @@ export const AddContacts = () =>{
                         id="linkedin"
                         value={data.linkedin}
                         onChange={changeHandler}
+                        onBlur={(e) => validators.urlValidator(e, setError)}
                     >
                     </input>
+                    {error && <p className={style["error-message"]}>{error.url}</p>}
                 </div>
                 <div className={style["row"]}>
                     <label htmlFor="github">GitHub</label>
@@ -77,7 +82,7 @@ export const AddContacts = () =>{
                         onBlur={(e) => validators.emailValidator(e.target.value, setError)}
                     >
                     </input>
-                    {error && <p className={style["error-message"]}>{error}</p>}
+                    {error && <p className={style["error-message"]}>{error.email}</p>}
                 </div>
                 <div className={style["row"]}>
                     <label htmlFor="phoneNumber">Phone Number</label>

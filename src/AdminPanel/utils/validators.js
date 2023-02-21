@@ -1,25 +1,27 @@
 
 
-export const emailValidator = (email, setError) => {
-    console.log(email);
-    if (!email) {
-        setError("Email is required");
+
+export const emailValidator = (e, setError) => {
+    if (![e.target.value]) {
+         setError({email: "Email is required"});
         // return "Email is required";
-    } else if (!new RegExp(/\S+@\S+\.\S+/).test(email)) {
-        setError("Incorrect email format");
+    } else if (!new RegExp(/\S+@\S+\.\S+/).test([e.target.value])) {
+         setError({email: "Incorrect email format"});
         // return "Incorrect email format";
+    }else{
+         setError( {email: ""});
     }
-    return "";
+    console.log([e]);
 };
 
 
-export const passwordValidator = password => {
+export const passwordValidator = (password, setError) => {
     if (!password) {
-        return "Password is required";
+        setError("Password is required");
     } else if (password.length < 8) {
-        return "Password must have a minimum 8 characters";
+        setError("Password must have a minimum 8 characters");
     }
-    return "";
+    setError("");
 };
 
 export const confirmPasswordValidator = (confirmPassword, form) => {
@@ -31,4 +33,16 @@ export const confirmPasswordValidator = (confirmPassword, form) => {
         return "Passwords do not match";
     }
     return "";
+};
+
+export const urlValidator = (url, setError) => {
+    if (!url) {
+        setError({url: "Url is required"});
+        // return "Email is required";
+    } else if (!new RegExp(/^(ftp|http|https):\/\/[^ "]+$/).test(url)) {
+        setError({url: "Incorrect url format"});
+        // return "Incorrect email format";
+    }else{
+        setError({url: ""});
+    }
 };
